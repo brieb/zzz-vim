@@ -109,6 +109,7 @@ let g:session_default_to_last=1
 
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
 
 let delimitMate_expand_cr=1
 
@@ -147,7 +148,7 @@ set mouse=a
 "Always show the statusline
 set laststatus=2
 "Format the statusline
-set statusline=%n\ %r%m\ %f%=%w%y[%l/%L:%c]%{strftime(\"%l:%M%p\ %m/%d\")}
+set statusline=%r%m\ %f%=%{fugitive#statusline()}
 
 """"""""""""""""""""
 " => Spell Checking
@@ -322,13 +323,13 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "endif
 
 "let g:ctrlp_working_path_mode = 0
-let g:ctrlp_extensions = ["tag", "buffertag"]
+"let g:ctrlp_extensions = ["tag", "buffertag"]
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$',
   \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*',
   \ 'link': '',
   \ }
-map <C-i> :CtrlPMRU<CR>
+"map <C-i> :CtrlPMRU<CR>
 map <C-o> :CtrlPBuffer<CR>
 
 cnoremap W w
@@ -344,3 +345,17 @@ autocmd FileType vo_base :set updatetime=4000
 "highlight clear
 "map <silent> <leader>hc :noh<cr>
 nnoremap <CR> :noh<CR><CR>
+
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+set colorcolumn=80
+
+nnoremap <C-[> :pop<CR>
+
+let g:easytags_cmd = '/usr/local/bin/jsctags'
