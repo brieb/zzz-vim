@@ -1,0 +1,324 @@
+snippet .after "after"
+.after(${1:count})$0
+endsnippet
+
+snippet .all "all"
+.all(function(${1:value}) {
+	$2
+}${3:, ${4:[context]}})
+endsnippet
+
+snippet .any "any"
+.any(${1:function(${2:num}) {
+	$3
+\}${4:, ${5:[context]}}})$0
+endsnippet
+
+snippet bind "bind"
+_.bind(${1:function}${2:, ${3:object}}${4:, ${5:[*arguments]}});$0
+endsnippet
+
+snippet bindAll "bindAll"
+_.bindAll(${1:this}${2:, ${3:[*methodNames]}});$0
+endsnippet
+
+snippet .chain "chain"
+.chain()
+endsnippet
+
+snippet .clone "clone"
+.clone()
+endsnippet
+
+snippet .compact "compact"
+.compact()$0
+endsnippet
+
+snippet .compose "compose"
+.compose(${1:*functions})$0
+endsnippet
+
+snippet .debounce "debounce"
+.debounce(${1:wait})$0
+endsnippet
+
+snippet .defaults "defaults"
+.defaults(${1:*defaults})$0
+endsnippet
+
+snippet .defer "defer"
+.defer()
+endsnippet
+
+snippet .delay "delay"
+.delay(${1:wait}${2:, ${3:*[arguments]}})$0
+endsnippet
+
+snippet .detect "detect"
+.detect(function(${1:num}) {
+	$2
+}${3:, ${4:[context]}})$0
+endsnippet
+
+snippet .difference "difference"
+.difference(${1:array})$0
+endsnippet
+
+snippet .each "each"
+.each(function(${1:num${2:, ${3:key}}}) {
+	$4
+}${5:, ${6:[context]}})$0
+endsnippet
+
+snippet .extend "extend"
+.extend(${1:*sources})$0
+endsnippet
+
+snippet .first "first"
+.first(${1:[n]})$0
+endsnippet
+
+snippet .flatten "flatten"
+.flatten()$0
+endsnippet
+
+snippet .functions "functions"
+.functions()
+endsnippet
+
+snippet .groupBy "groupBy"
+.groupBy(function(${1:value}) {
+	$2
+})$0
+endsnippet
+
+snippet .identity "identity"
+.identity()
+endsnippet
+
+snippet .include "include"
+.include(${1:value})$0
+endsnippet
+
+snippet .indexOf "indexOf"
+.indexOf(${1:value}${2:, ${3:[isSorted]}})$0
+endsnippet
+
+snippet .intersection "intersection"
+.intersection(${1:*arrays})$0
+endsnippet
+
+snippet .invoke "invoke"
+.invoke('${1:methodName}'${2:, ${3:[*arguments]}})$0
+endsnippet
+
+snippet .isArguments "isArguments"
+.isArguments()
+endsnippet
+
+snippet .isArray() "isArray"
+.isArray()
+endsnippet
+
+snippet .isBoolean "isBoolean"
+.isBoolean()
+endsnippet
+
+snippet .isDate "isDate"
+.isDate()
+endsnippet
+
+snippet .isElement "isElement"
+.isElement()
+endsnippet
+
+snippet .isEmpty "isEmpty"
+.isEmpty()
+endsnippet
+
+snippet .isEqual "isEqual"
+.isEqual(${1:other})$0
+endsnippet
+
+snippet .isFunction "isFunction"
+.isFunction()
+endsnippet
+
+snippet .isNaN "isNaN"
+.isNaN()
+endsnippet
+
+snippet .isNull "isNull"
+.isNull()
+endsnippet
+
+snippet .isNumber "isNumber"
+.isNumber()
+endsnippet
+
+snippet .isRegExp "isRegExp"
+.isRegExp()
+endsnippet
+
+snippet .isString "isString"
+.isString()
+endsnippet
+
+snippet .isUndefined "isUndefined"
+.isUndefined()
+endsnippet
+
+snippet .keys "keys"
+.keys()
+endsnippet
+
+snippet .last "last"
+.last()$0
+endsnippet
+
+snippet .lastIndexOf "lastIndexOf"
+.lastIndexOf(${1:value}${2:, ${3:[isSorted]}})$0
+endsnippet
+
+snippet .map "map"
+.map(function(${1:num${2:, ${3:key}}}) {
+	$4
+}${5:, ${6:[context]}})$0
+endsnippet
+
+snippet .max "max"
+.max(${1:function(${2:value}) {
+	$3
+\}${4:, ${5:[context]}}})
+endsnippet
+
+snippet .memoize "memoize"
+.memoize(${1:[hashFunction]})$0
+endsnippet
+
+snippet .min "min"
+.min(${1:function(${2:value}) {
+	$3
+\}${4:, ${5:[context]}}})
+endsnippet
+
+snippet _.mixin "mixin"
+_.mixin(${1:{${2:name}: ${3:function(${4:*arguments}) {
+	$5
+\}}})$0
+endsnippet
+
+snippet _.noConflict "noConflict"
+_.noConflict()
+endsnippet
+
+snippet .once "once"
+.once()
+endsnippet
+
+snippet .pluck "pluck"
+.pluck('${1:propertyName}')$0
+endsnippet
+
+snippet .range "range"
+.range(${1:${2:[start]}, }${3:stop}${4:, ${5:[step]}})$0
+endsnippet
+
+snippet .reduce "reduce"
+.reduce(function(${1:memo}, ${2:num}) {
+	$3
+
+	return memo
+}${4:, ${5:[context]}})$0
+endsnippet
+
+snippet .reduceRight "reduceRight"
+.reduceRight(function(${1:a}, ${2:b}) {
+	$3
+}, ${4:[]}${5:, ${6:[context]}})$0
+endsnippet
+
+snippet .reject "reject"
+.reject(function(${1:num}) {
+	$2
+}${3:, ${4:[context]}})$0
+endsnippet
+
+snippet .rest "rest"
+.rest(${1:[n]})$0
+endsnippet
+
+snippet .select "select"
+.select(function(${1:num}) {
+	$2
+}${3:, ${4:[context]}})$0
+endsnippet
+
+snippet .size "size"
+.size(${1:list})$0
+endsnippet
+
+snippet .sortBy "sortBy"
+.sortBy(function(${1:value}) {
+	$2
+}${3:, ${4:[context]}})$0
+endsnippet
+
+snippet .sortedIndex "sortedIndex"
+.sortedIndex(${1:value})$0
+endsnippet
+
+snippet .tap "tap"
+.tap(${1:interceptor})$0
+endsnippet
+
+snippet _.template "template"
+_.template(${1:templateString}${2:, ${3:[context]}})$0
+endsnippet
+
+snippet .throttle "throttle"
+.throttle(${1:wait})$0
+endsnippet
+
+snippet .times "times"
+.times(${1:function(${2:index}) {
+	$3
+\}})$0
+endsnippet
+
+snippet .toArray "toArray"
+.toArray(${1:list})$0
+endsnippet
+
+snippet .union "union"
+.union(${1:*arrays})$0
+endsnippet
+
+snippet .uniq "uniq"
+.uniq(${1:array}${2:, ${3:[isSorted]}})$0
+endsnippet
+
+snippet _.uniqueId "uniqueId"
+_.uniqueId(${1:[prefix]})$0
+endsnippet
+
+snippet .value "value"
+.value()
+endsnippet
+
+snippet .values "values"
+.values()
+endsnippet
+
+snippet .without "without"
+.without(${1:[*values]})$0
+endsnippet
+
+snippet .wrap "wrap"
+.wrap(${1:wrapper})$0
+endsnippet
+
+snippet .zip "zip"
+.zip(${1:*arrays})$0
+endsnippet
+

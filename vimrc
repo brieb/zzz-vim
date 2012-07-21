@@ -327,12 +327,6 @@ let g:ctrlp_custom_ignore = {
 "map <C-i> :CtrlPMRU<CR>
 map <C-o> :CtrlPBuffer<CR>
 
-map <C-i>cor :CtrlP clinkle-web-core/<CR>
-map <C-i>com :CtrlP clinkle-web-compliance/<CR>
-map <C-i>i :CtrlP clinkle-web-internal/<CR>
-map <C-i>mem :CtrlP clinkle-web-member/<CR>
-map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
-
 cnoremap W w
 cnoremap Q q
 
@@ -359,12 +353,27 @@ command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
       \ | execute ':redraw!'
 
-function! Rsync(file)
-  execute ':Silent clinkle-rsync ' . a:file . '&'
-endfunction
-
-map <silent> <leader>w :wa<CR>:call Rsync('%:p')<CR>
 
 set colorcolumn=80
+set foldlevelstart=99999
 
-let g:easytags_cmd = '/usr/local/bin/jsctags'
+let g:UltiSnipsSnippetDirectories=["snippets"]
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"Clinkle-specific
+noremap <Leader>ac :Ack! --js "(Models\|Views).{0,5}\b<cword>\b = Clinkle"<cr>
+
+function! Rsync()
+  execute ':Silent clinkle-rsync &'
+endfunction
+
+map <silent> <leader>w :wa<CR>:call Rsync()<CR>
+
+map <C-i>cor :CtrlP clinkle-web-core/<CR>
+map <C-i>com :CtrlP clinkle-web-compliance/<CR>
+map <C-i>i :CtrlP clinkle-web-internal/<CR>
+map <C-i>mem :CtrlP clinkle-web-member/<CR>
+map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
+
