@@ -1,0 +1,46 @@
+snippet .get "get" i
+.get('${1:property}');$0
+endsnippet
+
+snippet .set "set" i
+.set('${1:property}', ${2:value});$0
+endsnippet
+
+snippet tpl "this.$el.html..."
+this.$el.html(JST[${1:this.template}](${2:this.model.toJSON()}));${3}
+endsnippet
+
+snippet strict "strict"
+(function() {
+  'use strict';
+
+	$0
+
+}());
+
+endsnippet
+
+snippet view "Clinkle Backbone View"
+(function() {
+  'use strict';
+
+  namespace('Clinkle${1:.Internal}.Views').${2} = Clinkle.Views.View.extend({
+    template: '${3}',
+
+    initialize: function(options) {
+      _.extend(this, options);
+      this.$el = $(this.el); // TODO: Remove when Backbone upgrade.
+			_.bindAll(this);
+			$0
+    },
+
+		render: function() {
+			return this;
+		}
+
+  });
+
+}());
+
+endsnippet
+
