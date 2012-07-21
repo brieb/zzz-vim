@@ -110,6 +110,9 @@ let g:session_default_to_last=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
 
 let delimitMate_expand_cr=1
 
@@ -183,10 +186,10 @@ map <leader>mo :set mouse=<CR>
 "map <leader>tq :tabclose<CR>
 "map <leader>tm :tabmove 
 
-map <C-t> :tabnew<CR>
-map <C-q> :tabclose<CR>
-map <C-Left> gT
-map <C-Right> gt
+"map <C-t> :tabnew<CR>
+"map <C-q> :tabclose<CR>
+"map <C-Left> gT
+"map <C-Right> gt
 
 set tabpagemax=15
 "hi TabLineSel term=bold cterm=bold ctermfg=16 ctermbg=229
@@ -269,8 +272,6 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-map <leader>w :wa<CR>
-
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -299,12 +300,6 @@ set titlestring=%f
 set t_ts=]1;
 set t_fs=
 
-
-autocmd FileType python :IndentGuidesEnable
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
-
 let python_highlight_all = 1
 augroup Python
   au!
@@ -325,12 +320,18 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 "let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_extensions = ["tag", "buffertag"]
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$',
-  \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$\|core_test$\|spec$\|log$\|doc$\|git$',
+  \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*\|\.png$\|\.jpe?g$\|\.ogg$\|\.mp3$\|\.gem$',
   \ 'link': '',
   \ }
 "map <C-i> :CtrlPMRU<CR>
 map <C-o> :CtrlPBuffer<CR>
+
+map <C-i>cor :CtrlP clinkle-web-core/<CR>
+map <C-i>com :CtrlP clinkle-web-compliance/<CR>
+map <C-i>i :CtrlP clinkle-web-internal/<CR>
+map <C-i>mem :CtrlP clinkle-web-member/<CR>
+map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
 
 cnoremap W w
 cnoremap Q q
@@ -354,8 +355,16 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-set colorcolumn=80
+command! -nargs=1 Silent
+      \ | execute ':silent !'.<q-args>
+      \ | execute ':redraw!'
 
-nnoremap <C-[> :pop<CR>
+function! Rsync(file)
+  execute ':Silent clinkle-rsync ' . a:file . '&'
+endfunction
+
+map <silent> <leader>w :wa<CR>:call Rsync('%:p')<CR>
+
+set colorcolumn=80
 
 let g:easytags_cmd = '/usr/local/bin/jsctags'
