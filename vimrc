@@ -174,19 +174,23 @@ nnoremap <silent> <leader>y :YRShow<CR>
 
 let php_sql_query=1
 
-map <leader>ma :set mouse=a<CR>
-map <leader>mo :set mouse=<CR>
+map <leader>ma :set mouse=a<CR>:set number<CR>
+map <leader>mo :set mouse=<CR>:set nonumber<CR>
 
 "map <leader>tn :tabnext<CR>
 "map <leader>tN :tabNext<CR>
 "map <leader>to :tabnew<CR>
 "map <leader>tq :tabclose<CR>
 "map <leader>tm :tabmove 
+map <leader>tt :tabnext<CR>
+map <leader>to :tabnew<CR>
+map <leader>tq :tabclose<CR>
 
-map <C-t> :tabnew<CR>
-map <C-q> :tabclose<CR>
-map <C-Left> gT
-map <C-Right> gt
+"map <C-t> :tabnew<CR>
+"map <C-q> :tabclose<CR>
+"map <leader>t :tabnew<CR>
+"map <C-Left> gT
+"map <C-Right> gt
 
 set tabpagemax=15
 "hi TabLineSel term=bold cterm=bold ctermfg=16 ctermbg=229
@@ -322,7 +326,7 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
   "autocmd BufWritePost,FileWritePost *.coffee silent! !coffeetags -R -f tags &
 "endif
 
-"let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_extensions = ["tag", "buffertag"]
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$',
@@ -356,6 +360,11 @@ autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buff
 
 set colorcolumn=80
 
-nnoremap <C-[> :pop<CR>
+"nnoremap <C-[> :pop<CR>
 
 let g:easytags_cmd = '/usr/local/bin/jsctags'
+
+"set hi IndentGuidesOdd  ctermbg=black
+"set hi IndentGuidesEven ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=darkgrey
