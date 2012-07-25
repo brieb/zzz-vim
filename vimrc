@@ -317,18 +317,39 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
   "autocmd BufWritePost,FileWritePost *.coffee silent! !coffeetags -R -f tags &
 "endif
 
-"let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_extensions = ["tag", "buffertag"]
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_mruf_relative = 1
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_reuse_window = 'netrw'
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_clear_cache_on_exit = 0
+"let g:ctrlp_user_command = ['.git', 'cd %s/clinkle-web-internal && git ls-files']
+"let g:ctrlp_user_command = {
+      "\ 'types': {
+      "\ 1: ['clinkle-web-internal/.git', 'cd %s && git ls-files'],
+      "\ },
+      "\ 'fallback': 'find %s -type f'
+      "\ }
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_open_multiple_files = '2vjr'
+"let g:ctrlp_prompt_mappings = {
+      "\ 'OpenMulti()': ['<c-o>', '<cr>']
+      "\}
+let g:ctrlp_extensions = ['buffertag', 'line', 'changes']
+"let g:ctrlp_extensions = ['line', 'changes']
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$\|core_test$\|spec$\|log$\|doc$\|git$',
   \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*\|\.png$\|\.jpe?g$\|\.ogg$\|\.mp3$\|\.gem$',
   \ 'link': '',
   \ }
-"map <C-i> :CtrlPMRU<CR>
+let g:ctrlp_buftag_types = {
+      \ 'javascript' : {
+      \ 'bin': 'jsctags',
+      \ 'args': '-f -',
+      \ },
+      \ }
+map <C-u> :CtrlPMRU<CR>
 map <C-o> :CtrlPBuffer<CR>
-
-cnoremap W w
-cnoremap Q q
 
 noremap <Leader>aa :Ack! 
 noremap <Leader>aw :Ack! <cword><cr>
@@ -376,4 +397,15 @@ map <C-i>com :CtrlP clinkle-web-compliance/<CR>
 map <C-i>i :CtrlP clinkle-web-internal/<CR>
 map <C-i>mem :CtrlP clinkle-web-member/<CR>
 map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
+
+"map <C-i>gen :e `clinkle-gen `<left>
+map <C-i>gen :call ClinkleGen('')<left><left>
+
+fun! ClinkleGen(args)
+  "for f in split(system("clinkle-gen ".a:args), '\n')
+    "execute "vsp ".f
+  "endfor
+  execute ":args `clinkle-gen ".a:args."` | vertical all"
+endfun
+
 

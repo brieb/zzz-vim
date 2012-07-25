@@ -6,6 +6,21 @@ snippet .set "set" i
 .set('${1:property}', ${2:value});$0
 endsnippet
 
+snippet init "initialize"
+initialize: function(options) {
+  _.extend(this, options);
+  this.$el = $(this.el); // TODO: Remove when Backbone upgrade.
+  _.bindAll(this);
+  $0
+}
+endsnippet
+
+snippet rend "render"
+render: function() {
+  $0
+}${1:,}
+endsnippet
+
 snippet tpl "this.$el.html..."
 this.$el.html(JST[${1:this.template}](${2:this.model.toJSON()}));${3}
 endsnippet
