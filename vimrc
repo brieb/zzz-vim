@@ -350,6 +350,8 @@ let g:ctrlp_buftag_types = {
       \ }
 map <C-u> :CtrlPMRU<CR>
 map <C-o> :CtrlPBuffer<CR>
+map <C-p>l :CtrlPLine<CR>
+map <C-p>p :CtrlP<CR>
 
 noremap <Leader>aa :Ack! 
 noremap <Leader>aw :Ack! <cword><cr>
@@ -408,4 +410,7 @@ fun! ClinkleGen(args)
   execute ":args `clinkle-gen ".a:args."` | vertical all"
 endfun
 
+"""
+
+let g:SimpleJsIndenter_BriefMode = 1
 
