@@ -5,7 +5,9 @@ if ( match(hostname(), 'corn') >= 0 )
   call add(g:pathogen_disabled, 'vim-easytags')
 endif
 
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
+Helptags
 
 syntax on
 filetype plugin indent on
@@ -323,6 +325,7 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_reuse_window = 'netrw'
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_mruf_max = 30
 "let g:ctrlp_user_command = ['.git', 'cd %s/clinkle-web-internal && git ls-files']
 "let g:ctrlp_user_command = {
       "\ 'types': {
@@ -338,7 +341,7 @@ let g:ctrlp_open_multiple_files = '2vjr'
 let g:ctrlp_extensions = ['buffertag', 'line', 'changes']
 "let g:ctrlp_extensions = ['line', 'changes']
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$\|core_test$\|spec$\|log$\|doc$\|git$',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$\|core_test$\|log$\|doc$\|git$',
   \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*\|\.png$\|\.jpe?g$\|\.ogg$\|\.mp3$\|\.gem$',
   \ 'link': '',
   \ }

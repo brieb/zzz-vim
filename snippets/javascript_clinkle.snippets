@@ -59,3 +59,20 @@ snippet view "Clinkle Backbone View"
 
 endsnippet
 
+snippet router "Clinkle Backbone Router"
+(function() {
+  'use strict';
+
+  namespace('Clinkle${1:.Internal}.Routers').${2} = Backbone.Router.extend({
+    routes: {
+      '${3}': '${4}',
+      $0
+    },
+
+    $4: function(${5}) {}
+  });
+
+}());
+
+endsnippet
+
