@@ -56,7 +56,7 @@ set cindent
 " make uses real tabs
 au FileType make set noexpandtab
 
-let mapleader=","
+" let mapleader=","
 
 nnoremap <C-@> a
 vnoremap <C-@> <Esc>gV
@@ -115,8 +115,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 1
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
-
-let delimitMate_expand_cr=1
 
 autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -322,7 +320,7 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_reuse_window = 'netrw'
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_mruf_max = 30
@@ -351,10 +349,16 @@ let g:ctrlp_buftag_types = {
       \ 'args': '-f -',
       \ },
       \ }
-map <C-u> :CtrlPMRU<CR>
-map <C-o> :CtrlPBuffer<CR>
-map <C-p>l :CtrlPLine<CR>
-map <C-p>p :CtrlP<CR>
+" map <C-u> :CtrlPMRU<CR>
+" map <C-o> :CtrlPBuffer<CR>
+" map <C-p>l :CtrlPLine<CR>
+" map <C-p>p :CtrlP<CR>
+
+let g:ctrlp_map = '\p'
+map <leader>pu :CtrlPMRU<CR>
+map <leader>po :CtrlPBuffer<CR>
+map <leader>pl :CtrlPLine<CR>
+map <leader>pp :CtrlP<CR>
 
 noremap <Leader>aa :Ack! 
 noremap <Leader>aw :Ack! <cword><cr>
@@ -392,16 +396,16 @@ let g:UltiSnipsSnippetDirectories=["snippets"]
 noremap <Leader>ac :Ack! --js "(Models\|Views).{0,5}\b<cword>\b = Clinkle"<cr>
 
 function! Rsync()
-  execute ':Silent clinkle-rsync &'
+  execute ':silent !clinkle-rsync'
 endfunction
 
-map <silent> <leader>w :wa<CR>:call Rsync()<CR>
+map <silent> <leader>w :wa<CR>:!clinkle-rsync<CR>
 
-map <C-i>cor :CtrlP clinkle-web-core/<CR>
-map <C-i>com :CtrlP clinkle-web-compliance/<CR>
-map <C-i>i :CtrlP clinkle-web-internal/<CR>
-map <C-i>mem :CtrlP clinkle-web-member/<CR>
-map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
+" map <C-i>cor :CtrlP clinkle-web-core/<CR>
+" map <C-i>com :CtrlP clinkle-web-compliance/<CR>
+" map <C-i>i :CtrlP clinkle-web-internal/<CR>
+" map <C-i>mem :CtrlP clinkle-web-member/<CR>
+" map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
 
 "map <C-i>gen :e `clinkle-gen `<left>
 map <C-i>gen :call ClinkleGen('')<left><left>
@@ -416,4 +420,18 @@ endfun
 """
 
 let g:SimpleJsIndenter_BriefMode = 1
+
+autocmd User fugitive 
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gc :Gcommit<cr>
+nnoremap <leader>grm :Gremove<cr>
+nnoremap <leader>gmv :Gmove 
+nnoremap <leader>gg :Ggrep 
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gd :Gdiff<cr>
 
