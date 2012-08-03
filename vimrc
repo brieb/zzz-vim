@@ -151,7 +151,7 @@ set mouse=a
 "Always show the statusline
 set laststatus=2
 "Format the statusline
-set statusline=%r%m\ %f%=%{fugitive#statusline()}
+set statusline=%r%m\ %f%=%{fugitive#statusline()}%{getcwd()}
 
 """"""""""""""""""""
 " => Spell Checking
@@ -399,13 +399,13 @@ function! Rsync()
   execute ':silent !clinkle-rsync'
 endfunction
 
-map <silent> <leader>w :wa<CR>:!clinkle-rsync<CR>
+map <silent> <leader>w :wa<CR>:silent !clinkle-rsync<CR>
 
-" map <C-i>cor :CtrlP clinkle-web-core/<CR>
-" map <C-i>com :CtrlP clinkle-web-compliance/<CR>
-" map <C-i>i :CtrlP clinkle-web-internal/<CR>
-" map <C-i>mem :CtrlP clinkle-web-member/<CR>
-" map <C-i>mer :CtrlP clinkle-web-merchant/<CR>
+map <leader>pcor :CtrlP clinkle-web-core/<CR>
+map <leader>pcom :CtrlP clinkle-web-compliance/<CR>
+map <leader>pi :CtrlP clinkle-web-internal/<CR>
+map <leader>pmem :CtrlP clinkle-web-member/<CR>
+map <leader>pmer :CtrlP clinkle-web-merchant/<CR>
 
 "map <C-i>gen :e `clinkle-gen `<left>
 map <C-i>gen :call ClinkleGen('')<left><left>
@@ -416,6 +416,9 @@ fun! ClinkleGen(args)
   "endfor
   execute ":args `clinkle-gen ".a:args."` | vertical all"
 endfun
+
+
+vmap <leader>json :!python -mjson.tool<CR>
 
 """
 
@@ -434,4 +437,8 @@ nnoremap <leader>gmv :Gmove
 nnoremap <leader>gg :Ggrep 
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gdiff<cr>
+
+let g:Powerline_theme='custom'
+let g:Powerline_colorscheme='custom'
+" let g:Powerline_symbols = 'unicode'
 

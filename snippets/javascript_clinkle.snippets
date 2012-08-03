@@ -76,3 +76,24 @@ snippet router "Clinkle Backbone Router"
 
 endsnippet
 
+snippet model "Clinkle Backbone Model"
+(function() {
+  'use strict';
+
+  ${1:var Internal = namespace('Clinkle.Internal');
+  }
+  /**
+  * Manages a single member.
+  */
+  namespace(${2:Internal}, 'Models').${3} = Clinkle.Models.Model.extend({
+    initialize: function() {
+      $0
+    },
+
+    fetch: function() {
+    }
+
+  });
+}());
+
+endsnippet
