@@ -1,0 +1,78 @@
+[submodule "bundle/bufkill.vim"]
+	path = bundle/bufkill.vim
+	url = git://github.com/vim-scripts/bufkill.vim.git
+[submodule "bundle/ack.vim"]
+  path = bundle/ack.vim
+  url = git://github.com/mileszs/ack.vim.git
+[submodule "bundle/ctrlp.vim"]
+  path = bundle/ctrlp.vim
+  url = git://github.com/kien/ctrlp.vim.git
+[submodule "bundle/delimitMate"]
+  path = bundle/delimitMate
+  url = git://github.com/Raimondi/delimitMate.git
+; [submodule "bundle/mustache.vim"]
+;   path = bundle/mustache.vim
+;   url = git@github.com:brieb/vim.git
+[submodule "bundle/rename.vim"]
+  path = bundle/rename.vim
+  url = git://github.com/danro/rename.vim.git
+; [submodule "bundle/scss-syntax"]
+;   path = bundle/scss-syntax
+;   url = git@github.com:brieb/vim.git
+[submodule "bundle/simple-javascript-indenter"]
+  path = bundle/simple-javascript-indenter
+  url = git://github.com/jiangmiao/simple-javascript-indenter.git
+[submodule "bundle/ultisnips"]
+  path = bundle/ultisnips
+  url = git://github.com/guns/ultisnips.git
+[submodule "bundle/vim-arcanist"]
+  path = bundle/vim-arcanist
+  url = git://github.com/phleet/vim-arcanist.git
+; [submodule "bundle/vim-coffee-script"]
+;   path = bundle/vim-coffee-script
+;   url = git@github.com:brieb/vim.git
+[submodule "bundle/vim-commentary"]
+  path = bundle/vim-commentary
+  url = git://github.com/tpope/vim-commentary.git
+; [submodule "bundle/vim-easytags"]
+;   path = bundle/vim-easytags
+;   url = git@github.com:brieb/vim.git
+[submodule "bundle/vim-eunuch"]
+  path = bundle/vim-eunuch
+  url = git://github.com/tpope/vim-eunuch.git
+[submodule "bundle/vim-fugitive"]
+  path = bundle/vim-fugitive
+  url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-git"]
+  path = bundle/vim-git
+  url = git://github.com/tpope/vim-git.git
+; [submodule "bundle/vim-indent-guides"]
+;   path = bundle/vim-indent-guides
+;   url = git@github.com:brieb/vim.git
+; [submodule "bundle/vim-javascript"]
+;   path = bundle/vim-javascript
+;   url = git@github.com:brieb/vim.git
+; [submodule "bundle/vim-less"]
+;   path = bundle/vim-less
+;   url = git@github.com:brieb/vim.git
+; [submodule "bundle/vim-powerline"]
+;   path = bundle/vim-powerline
+;   url = git@github.com:brieb/vim-powerline.git
+[submodule "bundle/vim-repeat"]
+  path = bundle/vim-repeat
+  url = git://github.com/tpope/vim-repeat.git
+[submodule "bundle/vim-surround"]
+  path = bundle/vim-surround
+  url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-unimpaired"]
+  path = bundle/vim-unimpaired
+  url = git://github.com/tpope/vim-unimpaired.git
+; [submodule "bundle/vim-web-indent"]
+;   path = bundle/vim-web-indent
+;   url = git@github.com:brieb/vim.git
+; [submodule "bundle/vimoutliner"]
+;   path = bundle/vimoutliner
+;   url = git@github.com:brieb/vim.git
+; [submodule "bundle/vimoutliner-colorscheme-fix"]
+;   path = bundle/vimoutliner-colorscheme-fix
+;   url = git@github.com:brieb/vim.git
