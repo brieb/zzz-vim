@@ -10,9 +10,6 @@
 [submodule "bundle/rename.vim"]
 	path = bundle/rename.vim
 	url = git@github.com:brieb/vim.git
-[submodule "bundle/simple-javascript-indenter"]
-	path = bundle/simple-javascript-indenter
-	url = git@github.com:brieb/vim.git
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = git@github.com:brieb/vim.git
@@ -67,3 +64,6 @@
 [submodule "bundle/vimoutliner"]
 	path = bundle/vimoutliner
 	url = git://github.com/vimoutliner/vimoutliner.git
+[submodule "bundle/git-grep-vim"]
+	path = bundle/git-grep-vim
+	url = git://github.com/tjennings/git-grep-vim.git
