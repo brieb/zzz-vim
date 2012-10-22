@@ -49,15 +49,9 @@
 [submodule "bundle/vim-indent-guides"]
 	path = bundle/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
-	url = git://github.com/pangloss/vim-javascript.git
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "bundle/vim-web-indent"]
-	path = bundle/vim-web-indent
-	url = git://github.com/lukaszb/vim-web-indent.git
 [submodule "bundle/vimoutliner-colorscheme-fix"]
 	path = bundle/vimoutliner-colorscheme-fix
 	url = git://github.com/vim-scripts/vimoutliner-colorscheme-fix.git
@@ -67,3 +61,27 @@
 [submodule "bundle/git-grep-vim"]
 	path = bundle/git-grep-vim
 	url = git://github.com/tjennings/git-grep-vim.git
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = git://github.com/tomasr/molokai.git
+[submodule "bundle/vim-nazca-colorscheme"]
+	path = bundle/vim-nazca-colorscheme
+	url = git://github.com/jelera/vim-nazca-colorscheme.git
+[submodule "bundle/mango"]
+	path = bundle/mango
+	url = git://github.com/goatslacker/mango.vim.git
+[submodule "bundle/vim-javascript-syntax"]
+	path = bundle/vim-javascript-syntax
+	url = git://github.com/jelera/vim-javascript-syntax.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "bundle/jshint.vim"]
+	path = bundle/jshint.vim
+	url = git://github.com/walm/jshint.vim.git
+[submodule "bundle/vim-bufsurf"]
+	path = bundle/vim-bufsurf
+	url = git://github.com/ton/vim-bufsurf.git
+[submodule "bundle/octave.vim"]
+	path = bundle/octave.vim
+	url = git://github.com/vim-scripts/octave.vim--.git

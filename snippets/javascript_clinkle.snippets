@@ -81,11 +81,8 @@ snippet model "Clinkle Backbone Model"
   'use strict';
 
   ${1:var Internal = namespace('Clinkle.Internal');
-  }
-  /**
-  * Manages a single member.
-  */
-  namespace(${2:Internal}, 'Models').${3} = Clinkle.Models.Model.extend({
+  
+  }namespace(${2:Internal}, 'Models').${3} = $2.Models.Model.extend({
     initialize: function() {
       $0
     },
@@ -94,6 +91,31 @@ snippet model "Clinkle Backbone Model"
     }
 
   });
+
+
+  namespace($2, 'Models').$3s = $2.Models.Collection.extend({
+    model: namespace($2, 'Models').$3
+  });
+
 }());
 
 endsnippet
+
+snippet $fun "jquery ready function"
+$(function() {
+  $0
+});
+endsnippet
+
+snippet cssclass "css class"
+var _get$1CssClass = function(${3:$1}) {
+  var ${1} = ${2}.$1;
+  switch ($3) {
+    case $1.${4}:
+      return $0
+    default:
+      throw new Clinkle.Errors.UnexpectedCaseException($3);
+  }
+};
+endsnippet
+

@@ -5,5 +5,7 @@ set guioptions-=m
 set guioptions+=LlRrb
 set guioptions-=LlRrb
 
-set guifont=Menlo
+set guifont=Menlo:h11
 
+map <D-Left> gT
+map <D-Right> gt

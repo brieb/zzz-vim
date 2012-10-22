@@ -4,9 +4,9 @@ require 'spec/fixture_server/fixture_servlet'
 module Clinkle
   module Fixtures
     class ${1}Servlet < Clinkle::FixtureServlet
-      fixture_for :GET, '${2}' do
+      fixture_for :${2:GET}, '${3}' do
 
-        type :default do
+        type :${4:default} do
           on %q()
           respond_with %q(
 $0

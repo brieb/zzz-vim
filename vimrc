@@ -317,10 +317,10 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
   "autocmd BufWritePost,FileWritePost *.coffee silent! !coffeetags -R -f tags &
 "endif
 
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 2
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_switch_buffer = 0
-let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|nerdtree'
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_mruf_max = 30
@@ -336,11 +336,11 @@ let g:ctrlp_open_multiple_files = '2vjr'
 "let g:ctrlp_prompt_mappings = {
       "\ 'OpenMulti()': ['<c-o>', '<cr>']
       "\}
-let g:ctrlp_extensions = ['buffertag', 'line', 'changes']
+" let g:ctrlp_extensions = ['buffertag', 'line', 'changes']
 "let g:ctrlp_extensions = ['line', 'changes']
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|salesforce$\|mobile$\|mocks$\|codemirror$\|__unused$\|\.idea$\|third_party$\|tmp$\|core_test$\|log$\|doc$\|git$',
-  \ 'file': '\.css$\|\.DS_Store$\|\.pdf$\|\.zip$\|\.git*\|\.png$\|\.jpe?g$\|\.ogg$\|\.mp3$\|\.gem$',
+  \ 'file': '\.DS_Store$\|\.pdf$\|\.zip$\|\.git*\|\.png$\|\.jpe?g$\|\.ogg$\|\.mp3$\|\.gem$',
   \ 'link': '',
   \ }
 let g:ctrlp_buftag_types = {
@@ -355,10 +355,10 @@ let g:ctrlp_buftag_types = {
 " map <C-p>p :CtrlP<CR>
 
 let g:ctrlp_map = '\p'
-map <leader>pu :CtrlPMRU<CR>
-map <leader>po :CtrlPBuffer<CR>
-map <leader>pl :CtrlPLine<CR>
-map <leader>pp :CtrlP<CR>
+" map <leader>pu :CtrlPMRU<CR>
+map <leader>o :CtrlPBuffer<CR>
+" map <leader>pl :CtrlPLine<CR>
+map <leader>p :CtrlP<CR>
 
 noremap <Leader>aa :Ack! 
 noremap <Leader>aw :Ack! <cword><cr>
@@ -377,14 +377,14 @@ fun! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   call cursor(l, c)
 endfun
-autocmd FileType c,cpp,java,php,ruby,python,javascript autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+autocmd FileType c,cpp,java,php,ruby,python,javascript,haml,less autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 command! -nargs=1 Silent
       \ | execute ':silent !'.<q-args>
       \ | execute ':redraw!'
 
 
-set colorcolumn=80
+set colorcolumn=101
 set foldlevelstart=99999
 
 let g:UltiSnipsSnippetDirectories=["snippets"]
@@ -396,16 +396,17 @@ let g:UltiSnipsSnippetDirectories=["snippets"]
 noremap <Leader>ac :Ack! --js "(Models\|Views).{0,5}\b<cword>\b = Clinkle"<cr>
 
 function! Rsync()
-  execute ':silent !clinkle-rsync'
+  execute ':Silent clinkle-rsync &'
 endfunction
 
-map <silent> <leader>w :wa<CR>:silent !clinkle-rsync<CR>
+" map <silent> <leader>w :wa<CR>:call Rsync()<CR>
+map <silent> <leader>w :wa<CR>:!clinkle-jsctags &<cr>
 
-map <leader>pcor :CtrlP clinkle-web-core/<CR>
-map <leader>pcom :CtrlP clinkle-web-compliance/<CR>
-map <leader>pi :CtrlP clinkle-web-internal/<CR>
-map <leader>pmem :CtrlP clinkle-web-member/<CR>
-map <leader>pmer :CtrlP clinkle-web-merchant/<CR>
+" map <leader>pcor :CtrlP clinkle-web-core/<CR>
+" map <leader>pcom :CtrlP clinkle-web-compliance/<CR>
+" map <leader>pi :CtrlP clinkle-web-internal/<CR>
+" map <leader>pmem :CtrlP clinkle-web-member/<CR>
+" map <leader>pmer :CtrlP clinkle-web-merchant/<CR>
 
 "map <C-i>gen :e `clinkle-gen `<left>
 map <C-i>gen :call ClinkleGen('')<left><left>
@@ -434,7 +435,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>grm :Gremove<cr>
 nnoremap <leader>gmv :Gmove 
-nnoremap <leader>gg :Ggrep 
+nnoremap <leader>gg :GitGrep 
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
@@ -442,3 +443,7 @@ let g:Powerline_theme='custom'
 let g:Powerline_colorscheme='custom'
 " let g:Powerline_symbols = 'unicode'
 
+nnoremap <leader>[ :BufSurfBack<cr>
+nnoremap <leader>] :BufSurfForward<cr>
+
+autocmd FileType octave setlocal keywordprg=info\ octave\ --vi-keys\ --index-search
