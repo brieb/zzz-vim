@@ -112,9 +112,9 @@ let g:session_default_to_last=1
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=8
 
 autocmd FileType c,cpp,java,php autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -447,3 +447,63 @@ nnoremap <leader>[ :BufSurfBack<cr>
 nnoremap <leader>] :BufSurfForward<cr>
 
 autocmd FileType octave setlocal keywordprg=info\ octave\ --vi-keys\ --index-search
+
+" if has("gui_macvim")
+ " source $VIMRUNTIME/macmap.vim
+ " map <D-Left> 0
+ " map <D-Right> $ 
+ " let macvim_hig_shift_movement = 1
+ " set nodigraph 
+
+  " vnoremap  <S-C-Left>     B
+  " vnoremap  <S-C-Right>    E
+" endif
+
+" Shift + special movement key (<S-Left>, etc.) and mouse starts insert mode
+set selectmode=mouse,key
+set keymodel=startsel,stopsel
+
+" HIG related shift + special movement key mappings
+nn   <S-D-Left>     <S-Home>
+vn   <S-D-Left>     <S-Home>
+ino  <S-D-Left>     <S-Home>
+nn   <S-M-Left>     <S-C-Left>
+vn   <S-M-Left>     Bh
+" vn   <S-M-Left>     <S-C-Left>
+ino  <S-M-Left>     <S-C-Left>
+
+nn   <S-D-Right>    <S-End>
+vn   <S-D-Right>    <S-End>
+ino  <S-D-Right>    <S-End>
+nn   <S-M-Right>    <S-C-Right>
+vn   <S-M-Right>    e
+" vn   <S-M-Right>   <S-C-Right>
+ino  <S-M-Right>    <S-C-Right>
+
+nn   <S-D-Up>       <S-C-Home>
+vn   <S-D-Up>       <S-C-Home>
+ino  <S-D-Up>       <S-C-Home>
+
+nn   <S-D-Down>     <S-C-End>
+vn   <S-D-Down>     <S-C-End>
+ino  <S-D-Down>     <S-C-End>
+
+" vn   <S-C-Right>    E
+" vn   <S-C-Left>     B
+
+" ino  <M-Left>     <Esc>eli
+
+"
+autocmd FileType cpp :map <leader>fm :%!astyle  
+      \--style=kr 
+      \--indent-switches 
+      \--indent-preprocessor 
+      \--break-blocks 
+      \--pad-oper 
+      \--indent-col1-comments 
+      \--align-pointer=type 
+      \--align-reference=middle 
+      \--add-brackets 
+      \--max-code-length=80 
+      \--mode=c
+      \<CR><CR>
