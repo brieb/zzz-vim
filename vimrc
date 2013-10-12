@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -31,6 +31,9 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "scrooloose/nerdtree"
 Bundle "airblade/vim-gitgutter"
 Bundle "nathanaelkane/vim-indent-guides"
+Bundle "SirVer/ultisnips"
+Bundle "scrooloose/syntastic"
+Bundle "altercation/vim-colors-solarized"
 
 filetype plugin indent on     " required!
 "
@@ -43,11 +46,16 @@ filetype plugin indent on     " required!
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
 
+set t_Co=256
+set bg=light
+colorscheme solarized
+
 set expandtab
-set tabstop=4
+set tabstop=5
 set nofoldenable
 set mouse=a
 set cursorline
+syntax on
 
 set backspace=indent,eol,start  " Backspace for dummies
 set linespace=0                 " No extra spaces between rows
@@ -164,3 +172,13 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:gitgutter_realtime = 0
 " }
 
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+let mapleader = ","
+
+let g:ycm_extra_conf_globlist = ["~/cs224w/snap/*"]
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
