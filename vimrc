@@ -31,9 +31,9 @@ Bundle "scrooloose/nerdcommenter"
 Bundle "scrooloose/nerdtree"
 Bundle "airblade/vim-gitgutter"
 Bundle "nathanaelkane/vim-indent-guides"
-Bundle "SirVer/ultisnips"
 Bundle "scrooloose/syntastic"
 Bundle "altercation/vim-colors-solarized"
+Bundle "sbl/scvim"
 
 filetype plugin indent on     " required!
 "
@@ -182,3 +182,9 @@ let mapleader = ","
 
 let g:ycm_extra_conf_globlist = ["~/cs224w/snap/*"]
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:sclangTerm = "open -a iTerm.app"
+
+map <F1> <Esc>
+imap <F1> <Esc>
+
