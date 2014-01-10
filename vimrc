@@ -43,6 +43,7 @@ Bundle "nathanaelkane/vim-indent-guides"
 Bundle "altercation/vim-colors-solarized"
 Bundle "ap/vim-css-color"
 Bundle "kchmck/vim-coffee-script"
+Bundle "SirVer/ultisnips"
 
 " Might want to check out...
 " mihaifm/vimpanel
@@ -197,3 +198,7 @@ au InsertLeave * set nopaste                 " Disable paste mode when leaving I
 au FocusLost * :silent! wall                 " Save on FocusLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
+" YCM conflicts with UltiSnips TAB key usage
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
