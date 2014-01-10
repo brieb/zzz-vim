@@ -28,15 +28,26 @@ if v:version > 703
     Bundle "Valloric/YouCompleteMe"
 endif
 Bundle "kien/ctrlp.vim"
+Bundle "tpope/vim-commentary"
 Bundle "tpope/vim-surround"
 Bundle "tpope/vim-repeat"
-Bundle "scrooloose/nerdcommenter"
-Bundle "scrooloose/nerdtree"
-Bundle "airblade/vim-gitgutter"
-Bundle "nathanaelkane/vim-indent-guides"
+Bundle "tpope/vim-endwise"
+Bundle "tpope/vim-haml"
+Bundle "tpope/vim-unimpaired"
+Bundle "tpope/vim-abolish"
+Bundle "tpope/vim-vinegar"
 Bundle "scrooloose/syntastic"
+Bundle "mhinz/vim-signify"
+Bundle "goldfeld/vim-seek"
+Bundle "nathanaelkane/vim-indent-guides"
 Bundle "altercation/vim-colors-solarized"
+Bundle "ap/vim-css-color"
+Bundle "kchmck/vim-coffee-script"
 
+" Might want to check out...
+" mihaifm/vimpanel
+
+syntax enable
 filetype plugin indent on     " required!
 
 " Brief help
@@ -83,10 +94,11 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 "set matchpairs+=<:>             " Match, to be used with %
 set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
 set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
+set colorcolumn=80              " Highlight 80th column
 
 syntax on                       " Turn on syntax highlighting
 nnoremap Y y$                   " Yank from the cursor to the end of the line, to be consistent with C and D.
-nmap <silent> <leader>/ :nohlsearch<CR> " Clear search
+nmap <silent> <leader>/ :nohlsearch<CR> " Clear search highlights
 
 " Remove trailing whitespaces and ^M chars
 autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
@@ -137,7 +149,7 @@ let g:ctrlp_user_command = {
 
 " indent_guides {
 let g:indent_guides_auto_colors = 1
-let g:indent_guides_start_level = 2
+let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 " }
@@ -153,6 +165,7 @@ autocmd BufReadPost *
      \   exe "normal! g`\"" |
      \ endif
 
+" Remap leader to comma
 let mapleader = ","
 
 let g:ycm_extra_conf_globlist = ["~/cs224w/snap/*"]
@@ -163,4 +176,24 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 imap jj <Esc>
+
+" Additional vim-commentary comment strings
+autocmd FileType apache set commentstring=#\ %s
+
+cnoreabbrev W w
+cnoreabbrev Q q
+
+" Easy split navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Improve up/down movement on wrapped lines
+nnoremap j gj
+nnoremap k gk
+
+au InsertLeave * set nopaste                 " Disable paste mode when leaving Insert Mode
+au FocusLost * :silent! wall                 " Save on FocusLost
+au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
