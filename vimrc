@@ -24,7 +24,9 @@ Bundle 'gmarik/vundle'
 " Bundle 'file:///Users/gmarik/path/to/plugin'
 " ...
 
-Bundle "Valloric/YouCompleteMe"
+if v:version > 703
+    Bundle "Valloric/YouCompleteMe"
+endif
 Bundle "kien/ctrlp.vim"
 Bundle "tpope/vim-surround"
 Bundle "tpope/vim-repeat"
