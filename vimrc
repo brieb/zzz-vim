@@ -44,7 +44,7 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "ap/vim-css-color"
 Bundle "kchmck/vim-coffee-script"
 Bundle "SirVer/ultisnips"
-Bundle "Townk/vim-autoclose"
+" Bundle "Townk/vim-autoclose"
 
 " vim-script
 Bundle "matchit.zip"
@@ -90,10 +90,10 @@ set list                        " Display whitespace
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set wrap                        " Wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=4                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
+set shiftwidth=2                " Use indents of 2 spaces
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
