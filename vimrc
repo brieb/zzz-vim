@@ -26,6 +26,8 @@ Bundle 'gmarik/vundle'
 
 if v:version > 703
     Bundle "Valloric/YouCompleteMe"
+else
+  Bundle "AutoComplPop"
 endif
 Bundle "kien/ctrlp.vim"
 Bundle "tpope/vim-commentary"
@@ -213,3 +215,11 @@ au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLo
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+filetype plugin on
+au FileType php setl ofu=phpcomplete#CompletePHP
+au FileType ruby,eruby setl ofu=rubycomplete#Complete
+au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
+au FileType c setl ofu=ccomplete#CompleteCpp
+au FileType css setl ofu=csscomplete#CompleteCSS
+
