@@ -37,7 +37,6 @@ Bundle "tpope/vim-endwise"
 Bundle "tpope/vim-haml"
 Bundle "tpope/vim-unimpaired"
 Bundle "tpope/vim-abolish"
-Bundle "tpope/vim-vinegar"
 Bundle "tpope/vim-obsession"
 Bundle "scrooloose/syntastic"
 Bundle "mhinz/vim-signify"
@@ -105,7 +104,6 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
 set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 set colorcolumn=80              " Highlight 80th column
-set timeoutlen=200              " Shorten the delay between key presses for mappings
 
 syntax on                       " Turn on syntax highlighting
 nnoremap Y y$                   " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -223,3 +221,4 @@ au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType css setl ofu=csscomplete#CompleteCSS
 
+autocmd FileType c set commentstring=//\ %s
