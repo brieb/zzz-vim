@@ -100,7 +100,9 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 "set matchpairs+=<:>             " Match, to be used with %
 set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
 set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
-set colorcolumn=80              " Highlight 80th column
+if v:version > 702
+    set colorcolumn=80              " Highlight 80th column
+endif
 set timeoutlen=200              " Shorten the delay between key presses for mappings
 
 syntax on                       " Turn on syntax highlighting
