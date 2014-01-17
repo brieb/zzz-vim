@@ -25,7 +25,9 @@ Bundle 'gmarik/vundle'
 " ...
 
 if v:version > 703
-    Bundle "Valloric/YouCompleteMe"
+  Bundle "Valloric/YouCompleteMe"
+else
+  Bundle "AutoComplPop"
 endif
 Bundle "kien/ctrlp.vim"
 Bundle "tpope/vim-commentary"
@@ -35,7 +37,7 @@ Bundle "tpope/vim-endwise"
 Bundle "tpope/vim-haml"
 Bundle "tpope/vim-unimpaired"
 Bundle "tpope/vim-abolish"
-Bundle "tpope/vim-vinegar"
+Bundle "tpope/vim-obsession"
 Bundle "scrooloose/syntastic"
 Bundle "mhinz/vim-signify"
 Bundle "goldfeld/vim-seek"
@@ -43,8 +45,9 @@ Bundle "nathanaelkane/vim-indent-guides"
 Bundle "altercation/vim-colors-solarized"
 Bundle "ap/vim-css-color"
 Bundle "kchmck/vim-coffee-script"
+Bundle "mustache/vim-mustache-handlebars"
 Bundle "SirVer/ultisnips"
-Bundle "Townk/vim-autoclose"
+Bundle "Raimondi/delimitMate"
 
 " vim-script
 Bundle "matchit.zip"
@@ -90,10 +93,10 @@ set list                        " Display whitespace
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set wrap                        " Wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=4                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
+set shiftwidth=2                " Use indents of 2 spaces
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
@@ -103,7 +106,6 @@ set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 if v:version > 702
     set colorcolumn=80              " Highlight 80th column
 endif
-set timeoutlen=200              " Shorten the delay between key presses for mappings
 
 syntax on                       " Turn on syntax highlighting
 nnoremap Y y$                   " Yank from the cursor to the end of the line, to be consistent with C and D.
@@ -113,15 +115,15 @@ nmap <silent> <leader>/ :nohlsearch<CR> " Clear search highlights
 autocmd FileType c,cpp,java,go,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> call StripTrailingWhitespace()
 
 function! StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " do the business:
-    %s/\s\+$//e
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " do the business:
+  %s/\s\+$//e
+  " clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
 endfunction
 
 " Visual shifting (does not exit Visual mode)
@@ -146,14 +148,14 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " ctrlp {
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 let g:ctrlp_user_command = {
-    \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-    \ 'fallback': 'find %s -type f' }
+      \ 'types': {
+      \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+      \ },
+      \ 'fallback': 'find %s -type f' }
 "}
 
 " indent_guides {
@@ -170,9 +172,9 @@ let g:gitgutter_realtime = 0
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " Remap leader to comma
 let mapleader = ","
@@ -213,3 +215,12 @@ au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLo
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+filetype plugin on
+au FileType php setl ofu=phpcomplete#CompletePHP
+au FileType ruby,eruby setl ofu=rubycomplete#Complete
+au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
+au FileType c setl ofu=ccomplete#CompleteCpp
+au FileType css setl ofu=csscomplete#CompleteCSS
+
+autocmd FileType c set commentstring=//\ %s
