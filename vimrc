@@ -145,10 +145,11 @@ let NERDTreeKeepTreeInNewTab=1
 let g:nerdtree_tabs_open_on_gui_startup=0
 " }
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/_site/*,.DS_Store
 " ctrlp {
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+      \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site)$',
       \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 let g:ctrlp_user_command = {
       \ 'types': {
@@ -209,7 +210,6 @@ nnoremap k gk
 au InsertLeave * set nopaste                 " Disable paste mode when leaving Insert Mode
 
 au FocusLost * :silent! wall                 " Save on FocusLost
-au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
 " YCM conflicts with UltiSnips TAB key usage
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -224,3 +224,6 @@ au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType css setl ofu=csscomplete#CompleteCSS
 
 autocmd FileType c set commentstring=//\ %s
+
+map <F8> :w<CR>:!clear; gcc % -o %< && ./%<<CR>
+
