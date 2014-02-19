@@ -1,1 +1,2 @@
-set guifont=Menlo\ Regular:h13
+set guifont=Anonymous\ Pro:h13
+set lsp=3
