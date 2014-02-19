@@ -52,6 +52,7 @@ Bundle "Raimondi/delimitMate"
 " vim-script
 Bundle "matchit.zip"
 Bundle "HTML-AutoCloseTag"
+Bundle "MatlabFilesEdition"
 
 " Might want to check out...
 " mihaifm/vimpanel
