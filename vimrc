@@ -48,10 +48,13 @@ Bundle "kchmck/vim-coffee-script"
 Bundle "mustache/vim-mustache-handlebars"
 Bundle "SirVer/ultisnips"
 Bundle "Raimondi/delimitMate"
+Bundle "mileszs/ack.vim"
 
 " vim-script
 Bundle "matchit.zip"
 Bundle "HTML-AutoCloseTag"
+Bundle "a.vim"
+" Bundle "EasyGrep"
 
 " Might want to check out...
 " mihaifm/vimpanel
@@ -69,7 +72,7 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 set t_Co=256
-set bg=light
+set bg=dark
 colorscheme solarized
 
 set mouse=a                     " Set the mouse to be active
@@ -190,6 +193,7 @@ inoremap kj <Esc>
 
 " Additional vim-commentary comment strings
 autocmd FileType apache set commentstring=#\ %s
+autocmd FileType c set commentstring=//\ %s
 
 cnoreabbrev W w
 cnoreabbrev Q q
@@ -221,4 +225,15 @@ au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType c setl ofu=ccomplete#CompleteCpp
 au FileType css setl ofu=csscomplete#CompleteCSS
 
-autocmd FileType c set commentstring=//\ %s
+
+let g:acp_behaviorKeywordCommand = "\<C-n>"
+let g:acp_behaviorKeywordLength = 2
+
+" set grepprg=ack
+" let g:EasyGrepFilesToExclude = ".hg,*.o,.git,*.a,*.d"
+" let g:EasyGrepJumpToMatch = 0
+" let g:EasyGrepRecursive = 1
+" let g:EasyGrepCommand = 1
+" let g:EasyGrepMode = 2
+
+" set shellpipe=>
