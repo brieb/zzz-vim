@@ -160,8 +160,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/_site/*,.DS_Store
 " ctrlp {
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site)$',
-      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+      \ 'dir':  '\v[\/](\.git|\.hg|\.svn|_site|node_modules)$',
+      \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.swp$\|\.gitignore$' }
 let g:ctrlp_user_command = {
       \ 'types': {
       \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
