@@ -49,6 +49,13 @@ Bundle "mustache/vim-mustache-handlebars"
 Bundle "SirVer/ultisnips"
 Bundle "Raimondi/delimitMate"
 Bundle "mileszs/ack.vim"
+Bundle "plasticboy/vim-markdown"
+Bundle "scrooloose/nerdtree"
+Bundle "xolox/vim-misc"
+Bundle "xolox/vim-session"
+Bundle "vimwiki/vimwiki"
+Bundle "pangloss/vim-javascript"
+Bundle "briancollins/vim-jst"
 
 " vim-script
 Bundle "matchit.zip"
@@ -73,7 +80,7 @@ filetype plugin indent on     " required!
 " NOTE: comments after Bundle command are not allowed..
 
 set t_Co=256
-set bg=dark
+set bg=light
 colorscheme solarized
 
 set mouse=a                     " Set the mouse to be active
@@ -244,3 +251,8 @@ autocmd FileType c set commentstring=//\ %s
 
 map <F8> :w<CR>:!clear; gcc % -o %< && ./%<<CR>
 
+let g:solarized_contrast="high"    "default value is normal
+
+let g:session_autosave="yes"
+let g:session_autoload="yes"
+let g:session_default_to_last=1
